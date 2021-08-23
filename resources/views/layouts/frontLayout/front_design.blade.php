@@ -7,6 +7,11 @@
 /* @import url("css/layout.css"); */
 </style>
 <link rel="stylesheet" href="{{ asset('css/frontend_css/layout.css') }}" rel="stylesheet">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="{{ asset('js/frontend_js/jquery.js') }}"></script>
+<script src="{{ asset('js/frontend_js/jquery.validate.js') }}"></script>
+<script src="{{ asset('js/frontend_js/additional-methods.js') }}"></script>
+<script src="{{ asset('js/frontend_js/main.js') }}"></script>
 </head>
 <body>
 <div id="layout">
@@ -21,3 +26,9 @@
 </div>
 </body>
 </html>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+  </script>

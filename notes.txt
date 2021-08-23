@@ -1,1 +1,19 @@
 https://www.free-css.com/free-css-templates/page113/love-story
+
+http://jqueryvalidation.org/
+
+https://packagist.org/packages/captcha-com/laravel-captcha
+
+composer require buzz/laravel-google-captcha
+
+Then in config.php, add this under the provider
+
+Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider::class,
+
+php artisan vendor:publish --provider="Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider"
+
+https://www.laravelcode.com/post/laravel-55-google-recaptcha-code-with-validation-example
+
+while the installation is going on, we can get the keys from Google by Opening below link;
+https://developers.google.com/recaptcha/intro
+

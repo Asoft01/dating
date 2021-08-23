@@ -146,6 +146,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider::class,
 
         /*
          * Package Service Providers...

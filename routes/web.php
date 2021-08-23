@@ -20,6 +20,9 @@
 // });
 Route::get('/', 'IndexController@index');
 
+Route::any('/register', 'UsersController@register');
+Route::get('/check-email', 'UsersController@checkEmail');
+
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
 Route::get('/logout', 'AdminController@logout');
