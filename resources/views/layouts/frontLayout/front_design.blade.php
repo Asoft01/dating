@@ -16,7 +16,12 @@
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
     $(function() {
-      $( "#dob" ).datepicker({ maxDate: '0' });
+      $( "#dob" ).datepicker({ 
+          changeMonth: true,
+          changeYear: true,
+          maxDate: '0',
+          yearRange: '1950:2003'
+         });
     });
     </script>
 </head>

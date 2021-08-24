@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\Hobby;
+use App\Language;
 use App\User;
+use App\UsersDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +28,31 @@ class UsersController extends Controller
         return view('users.register');
     }
 
-    public function step2(){
-        return view('users.step2');
+    public function step2(Request $request){
+        // echo "<pre>"; print_r(Auth::user()); die;
+        // echo Auth::User()['id'];
+        if($request->isMethod('post')){
+            $data = $request->all();
+            echo "<pre>"; print_r($data); die;
+            $userDetail = new UsersDetail;
+            $userDetail->user_id = Auth::user()['id'];
+            $userDetail->dob = $data['dob'];
+            $userDetail->gender = $data['gender'];
+            $userDetail->height = $data['height'];
+            $userDetail->marital_status = $data['marital_status'];
+            $userDetail->save();
+        }
+        // Get All Countries 
+        $countries = Country::get();
+
+        // Get All Languages 
+        $languages = Language::orderBy('name', 'ASC')->get();
+
+        // Get All Hobbies
+
+        $hobbies = Hobby::orderBy('title', 'ASC')->get();
+
+        return view('users.step2')->with(compact('countries', 'languages', 'hobbies'));
     }
 
     public function login(Request $request){
