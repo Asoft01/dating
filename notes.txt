@@ -17,3 +17,12 @@ https://www.laravelcode.com/post/laravel-55-google-recaptcha-code-with-validatio
 while the installation is going on, we can get the keys from Google by Opening below link;
 https://developers.google.com/recaptcha/intro
 
+
+/////////////////// For Password Checking if Strong or Not ////////////////////////
+http://jsfiddle.net/aleem/KE3RB/8/
+
+Front Login
+
+php artisan make:middleware FrontLogin
+
+https://laracasts.com/discuss/channels/general-discussion/a-date-picker

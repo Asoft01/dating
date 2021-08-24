@@ -1,69 +1,121 @@
 <div id="left_container">
+    
+    @if(empty(Auth::check()))
+            <div class="partner_search">
+                <h2>Member Login</h2>
+                <div class="form_container">
+                    @if(Session::has('flash_message_error')) 
+                            <div class="alert alert-error alert-block">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong>{!! session('flash_message_error') !!}</strong>
+                            </div>
+                    @endif  
+                    <form action="{{ url('login') }}" method="post">{{ csrf_field() }}
+                        <fieldset>
+                        <div class="search_row">
+                            <div class="search_column_1">
+                            <label>Username</label>
+                            </div>
+                            <div class="search_column_2">
+                            <input type="text" name="email" id="email" placeholder="Username">
+                            
+                            </div>
+                        </div>
+                        <div class="search_row">
+                            <div class="search_column_1">
+                            <label>Password</label>
+                            </div>
+                            <div class="search_column_2">
+                                <input type="password" name="password" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="search_row last">
+                            <div class="search_column_1">&nbsp;</div>
+                            <div class="search_column_2">
+                                <input type="submit" value="Login" class="search_btn" style="background-color: #532D1A; color: #ffffff; width: 60px;" >
+                            </div>
+                        </div>
+                        </fieldset>
+                    </form>
+                </div>
+                
+            </div>
+    @else
+        <div class="partner_search">
+               <div class="form_container">
+                    <h2>Welcome <?php echo Auth::User()['name']; ?></h2>
+                    <div class="link_detail">
+                        <p class="link"><a href="{{ url('/step/2') }}">Adding Dating Profile</a></p>
+                        <p class="link"><a href="{{ url('/logout') }}">Logout</a></p>
+                    </div>
+               </div>
+        </div>
+    @endif
     <div class="partner_search">
-      <h2>partner search</h2>
-      <div class="form_container">
-        <form action="#" method="get">
-          <fieldset>
-          <div class="search_row">
-            <div class="search_column_1">
-              <label>I am a</label>
+        <h2>partner search</h2>
+        <div class="form_container">
+          <form action="#" method="get">
+            <fieldset>
+            <div class="search_row">
+              <div class="search_column_1">
+                <label>I am a</label>
+              </div>
+              <div class="search_column_2">
+                <select class="gender">
+                  <option>Male</option>
+                </select>
+                <label class="seeking">Seeking a</label>
+                <select class="gender">
+                  <option>Female</option>
+                </select>
+              </div>
             </div>
-            <div class="search_column_2">
-              <select class="gender">
-                <option>Male</option>
-              </select>
-              <label class="seeking">Seeking a</label>
-              <select class="gender">
-                <option>Female</option>
-              </select>
+            <div class="search_row">
+              <div class="search_column_1">
+                <label>Looking for a</label>
+              </div>
+              <div class="search_column_2">
+                <select class="date">
+                  <option>Date</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="search_row">
-            <div class="search_column_1">
-              <label>Looking for a</label>
+            <div class="search_row">
+              <div class="search_column_1">
+                <label>I was born</label>
+              </div>
+              <div class="search_column_2">
+                <select class="dob">
+                  <option>Month</option>
+                </select>
+                <select class="dob">
+                  <option>Date</option>
+                </select>
+                <select class="dob">
+                  <option>Year</option>
+                </select>
+              </div>
             </div>
-            <div class="search_column_2">
-              <select class="date">
-                <option>Date</option>
-              </select>
+            <div class="search_row">
+              <div class="search_column_1">
+                <label>By Profile ID</label>
+              </div>
+              <div class="search_column_2">
+                <input type="text" name="" value="" />
+                <label class="check">With Photo</label>
+                <input type="checkbox" name="" value="" class="checkbox"/>
+              </div>
             </div>
-          </div>
-          <div class="search_row">
-            <div class="search_column_1">
-              <label>I was born</label>
+            <div class="search_row last">
+              <div class="search_column_1">&nbsp;</div>
+              <div class="search_column_2">
+                <input type="image" src="{{ asset('images/frontend_images/search_btn.gif') }}" class="search_btn"/>
+              </div>
             </div>
-            <div class="search_column_2">
-              <select class="dob">
-                <option>Month</option>
-              </select>
-              <select class="dob">
-                <option>Date</option>
-              </select>
-              <select class="dob">
-                <option>Year</option>
-              </select>
-            </div>
-          </div>
-          <div class="search_row">
-            <div class="search_column_1">
-              <label>By Profile ID</label>
-            </div>
-            <div class="search_column_2">
-              <input type="text" name="" value="" />
-              <label class="check">With Photo</label>
-              <input type="checkbox" name="" value="" class="checkbox"/>
-            </div>
-          </div>
-          <div class="search_row last">
-            <div class="search_column_1">&nbsp;</div>
-            <div class="search_column_2">
-              <input type="image" src="{{ asset('images/frontend_images/search_btn.gif') }}" class="search_btn"/>
-            </div>
-          </div>
-          </fieldset>
-        </form>
+            </fieldset>
+          </form>
+        </div>
       </div>
-    </div>
     <div class="dating_news">
       <h2>dating news </h2>
       <div class="news_detail">

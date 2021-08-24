@@ -23,7 +23,8 @@
             
             <tr>
                 <td align="left" valign="top" class="body"><strong> Password: </strong></td>
-                <td align="left" valign="top"><input name="password" id="user_password" type="password" size="25" /></td>
+                <td align="left" valign="top"><input name="password" id="user_password" type="password" size="25" /> <span id="passstrength"></span></td>
+                
             </tr>
 
             <tr>

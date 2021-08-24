@@ -18,14 +18,22 @@
 // Route::get('/', function(){
 //     return view('coming-soon');
 // });
+
+// Front Routes 
 Route::get('/', 'IndexController@index');
 
 Route::any('/register', 'UsersController@register');
+Route::any('/step/2', 'UsersController@step2');
+
+Route::any('/login', 'UsersController@login');
+Route::any('/logout', 'UsersController@logout');
+
 Route::get('/check-email', 'UsersController@checkEmail');
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
-Route::get('/logout', 'AdminController@logout');
+// Route::get('/logout', 'AdminController@logout');
+Route::get('/admin/logout', 'AdminController@logout');
 
 
 Route::group(['middleware' => ['adminlogin']], function(){

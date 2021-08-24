@@ -127,6 +127,11 @@ body{font:10px/12px "Tahoma", Arial, Helvetica, sans-serif; background:#722622 u
 .dating_news .news_detail p.know_more a:hover{color:#926d1b; text-decoration:underline}
 
 
+.link_detail  p.link{float:left; width:257px; text-align:left; color:#926d1b; font-weight:bold; padding:10px 17px 10px 0; margin-left: 10px;}
+.link_detail  p.link a{color:#926d1b; text-decoration:none}
+.link_detail  p.link a:hover{color:#926d1b; text-decoration:underline}
+
+
 .dont_stay{float:left; width:274px; padding:0}
 .dont_stay img{float:left; width:auto; padding:0}
 
@@ -196,6 +201,24 @@ input.button:hover{cursor:pointer; color:#cccccc;}
 .blog-posted-row a:hover{text-decoration:none}
 
 .error{color: #870000; margin-left: 3px;}
+
+#signupForm {
+    margin:10px;
+}
+label {
+    font-family:verdana;
+    font-size:10px;
+}
+input {
+    padding:2px;
+    color:gray;
+}
+#passstrength {
+    color:red;
+    font-family:verdana;
+    font-size:10px;
+    font-weight:bold;
+}
 
 
 
