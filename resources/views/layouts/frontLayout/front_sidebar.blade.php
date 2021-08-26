@@ -29,12 +29,20 @@
                                 <input type="password" name="password" id="password" placeholder="Password">
                             </div>
                         </div>
-                        <div class="search_row last">
-                            <div class="search_column_1">&nbsp;</div>
-                            <div class="search_column_2">
-                                <input type="submit" value="Login" class="search_btn" style="background-color: #532D1A; color: #ffffff; width: 60px;" >
+                            <div class="search_row last">
+                                <div class="search_column_1">&nbsp;</div>
+                                <div class="search_column_2">
+                                    <input type="submit" value="Login" class="search_btn" style="background-color: #532D1A; color: #ffffff; width: 60px;" >
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="search_row last">
+                                <div class="search_column_1">&nbsp;</div>
+                                <div class="search_column_2">
+                                   <h3><a href="{{ url('register') }}">New User Register</a></h3>
+                                </div>
+                            </div>
+                            
                         </fieldset>
                     </form>
                 </div>

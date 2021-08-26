@@ -9,16 +9,16 @@
       <div> <br />
         <h6 class="inner">Personal Information:</h6>
         <br />
-        <form action="{{ url('/step/2') }}" method="post">{{ csrf_field() }}
+        <form id="datingForm" name="datingForm" action="{{ url('/step/2') }}" method="post">{{ csrf_field() }}
             {{-- <input type="text" name="user_id" value="Auth::User()['id']"> --}}
             <table width="80%" cellpadding = "10" cellspacing= "10">
               <tr>
-                <td align="left" valign="top" class="body"><strong>Date of Birth:</strong></td>
+                <td align="left" valign="top" class="body"><strong>Date of Birth: * </strong></td>
                 <td align="left" valign="top"><input autocomplete="off" name="dob" id="dob" type="text" size="22" style="font-size: 14px; width: 200px;"/></td>
               </tr>
              
               <tr>
-                <td align="left" valign="top" class="body"><strong>Gender:</strong></td>
+                <td align="left" valign="top" class="body"><strong>Gender: * </strong></td>
                 <td align="left" valign="top">
                     <select name="gender" style="font-size: 14px; height: 25px; width: 200px;">
                         <option>Select</option>
@@ -29,7 +29,7 @@
               </tr>
 
               <tr>
-                <td align="left" valign="top" class="body"><strong>Height:</strong></td>
+                <td align="left" valign="top" class="body"><strong>Height: * </strong></td>
                 <td align="left" valign="top">
                     <select name="height" style="font-size: 14px; height: 25px; width: 200px;">
                        <option value="">Feet/Inches</option>
@@ -49,7 +49,7 @@
               </tr>
 
               <tr>
-                <td align="left" valign="top" class="body"><strong>Marital Status:</strong></td>
+                <td align="left" valign="top" class="body"><strong>Marital Status: * </strong></td>
                 <td align="left" valign="top">
                     <select name="marital_status" style="font-size: 14px; height: 25px; width: 200px;">
                         <option value="">Select </option>
@@ -103,7 +103,7 @@
               <tr>
                 <td align="left" valign="top" class="body"><strong>Country:</strong></td>
                 <td align="left" valign="top">
-                    <select name="body_type" style="font-size: 14px; height: 25px; width: 200px;">
+                    <select name="country" style="font-size: 14px; height: 25px; width: 200px;">
                       <option value="">Select</option>
                         @foreach($countries as $country)
                             <option value="{{ $country->name }}">{{ $country->name }}</option>
@@ -149,7 +149,7 @@
               <tr>
                   <td align="left" valign="top" class="body"><strong> Occupation:</strong></td>
                   <td align="left" valign="top">
-                      <select name="" id="" style="font-size: 14px; height: 25px; width: 200px;">
+                      <select name="occupation" id="" style="font-size: 14px; height: 25px; width: 200px;">
                           <option value="">Select</option>
                           <option value="not_working">Not Working</option>
                           <option value="Teacher">Teacher</option>
@@ -181,7 +181,7 @@
                     <td colspan="2"><h6 class="inner">About MySelf</h6></td>
                 </tr>
               <tr>
-                  <td align="left" valign="top" class="body"><strong>About Myself:</strong></td>
+                  <td align="left" valign="top" class="body"><strong>About Myself: * </strong></td>
                   <td align="left" valign="top">
                     <textarea name="about_myself" style="font-size: 14px; height: 70px; width: 200px;"></textarea>
                 </td>
@@ -191,9 +191,9 @@
                   <td colspan="2"><h6 class="inner">About My Preferred Partner</h6></td>
               </tr>
               <tr>
-                <td align="left" valign="top" class="body"><strong>Partner Details:</strong></td>
+                <td align="left" valign="top" class="body"><strong>Partner Details: * </strong></td>
                 <td align="left" valign="top">
-                  <textarea name="about_myself" style="font-size: 14px; height: 75px; width: 200px;"></textarea>
+                  <textarea name="about_partner" style="font-size: 14px; height: 75px; width: 200px;"></textarea>
               </td>
             </tr>
               <tr>

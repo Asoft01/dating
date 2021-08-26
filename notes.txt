@@ -32,3 +32,5 @@ php artisan make:migration create_users_details_table
 https://github.com/raramuridesign/mysql-country-list/blob/master/country-lists/mysql-country-list.sql
 
 https://github.com/Voles/MySQL-ISO-639-1-language-codes/blob/master/db.sql
+
+php artisan make:migration add_columns_to_users_details

@@ -24,23 +24,95 @@ class UsersController extends Controller
             $user->email = $data['email'];
             $user->password = bcrypt($data['password']);
             $user->save();
+
+            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin'=> 0])){
+                // echo "success"; die;
+                Session::put('frontSession', $data['email']);
+                return redirect('/step/2');
+            }else{
+                // echo "failed"; die;
+                return redirect::back()->with('flash_message_error', 'Invalid Username or Password');
+            }
+
         }
         return view('users.register');
     }
 
     public function step2(Request $request){
+
+        // Check if dating profile already exists and under review 
+        $userProfileCount = UsersDetail::where(['user_id' => Auth::User()['id'], 'status' => 0])->count();
+        if($userProfileCount> 0){
+            return redirect('/review');
+        }
+        
         // echo "<pre>"; print_r(Auth::user()); die;
         // echo Auth::User()['id'];
         if($request->isMethod('post')){
             $data = $request->all();
-            echo "<pre>"; print_r($data); die;
+            // echo "<pre>"; print_r($data); die;
             $userDetail = new UsersDetail;
-            $userDetail->user_id = Auth::user()['id'];
-            $userDetail->dob = $data['dob'];
-            $userDetail->gender = $data['gender'];
-            $userDetail->height = $data['height'];
-            $userDetail->marital_status = $data['marital_status'];
+            $userDetail->user_id =          Auth::user()['id'];
+            $userDetail->dob =              $data['dob'];
+            $userDetail->gender =           $data['gender'];
+            $userDetail->height =           $data['height'];
+            $userDetail->marital_status =   $data['marital_status'];
+            $userDetail->body_type =        $data['body_type'];
+            
+            if(empty($data['body_type'])){
+                $data['body_type'] = '';
+            }
+
+            if(empty($data['city'])){
+                $data['city'] = '';
+            }
+            
+            if(empty($data['state'])){
+                $data['state'] = '';
+            }
+
+            if(empty($data['country'])){
+                $data['country'] = '';
+            }
+
+            if(empty($data['income'])){
+                $data['income'] = '';
+            }
+
+            if(empty($data['occupation'])){
+                $data['occupation'] = '';
+            }
+            
+            
+            $userDetail->city =             $data['city'];
+            $userDetail->state =            $data['state'];
+            $userDetail->country =          $data['country'];
+            $userDetail->education =        $data['education'];
+            $userDetail->occupation =       $data['occupation'];
+            $userDetail->income =           $data['income'];
+            $userDetail->about_myself =     $data['about_myself'];
+            $userDetail->about_partner =    $data['about_partner'];
+
+            $hobbies = "";
+            if(!empty($data['hobbies'])){
+                foreach($data['hobbies'] as $hobby){
+                    $hobbies .= $hobby . ', ';
+                }
+            }
+            
+            $userDetail->hobbies = $hobbies;
+
+            $languages = "";
+            if(!empty($data['languages'])){
+                foreach($data['languages'] as $language){
+                    $languages .= $language . ', ';
+                }
+            }
+
+            $userDetail->languages = $languages;
+
             $userDetail->save();
+            return redirect('/review');
         }
         // Get All Countries 
         $countries = Country::get();
@@ -84,5 +156,18 @@ class UsersController extends Controller
         }else{
             echo 'true';
         }
+    }
+
+    public function review(){
+        return view('users.review');
+    }
+
+    public function viewUsers(){
+        // $users = User::get();
+        // $users = User::where('admin', '!=', '1')->get();
+        $users = User::with('details')->where('admin', '!=', '1')->get();
+        $users = json_decode(json_encode($users), true);
+        // echo "<pre>"; print_r($users); die;
+        return view('admin.users.view_users')->with(compact('users'));
     }
 }

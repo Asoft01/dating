@@ -24,6 +24,7 @@ Route::get('/', 'IndexController@index');
 
 Route::any('/register', 'UsersController@register');
 Route::any('/step/2', 'UsersController@step2');
+Route::any('/review', 'UsersController@review');
 
 Route::any('/login', 'UsersController@login');
 Route::any('/logout', 'UsersController@logout');
@@ -41,5 +42,9 @@ Route::group(['middleware' => ['adminlogin']], function(){
     Route::get('/admin/settings', 'AdminController@settings');
     Route::get('/admin/check-pwd', 'AdminController@chkPassword');
     Route::match(['get', 'post'], '/admin/update-pwd', 'AdminController@updatePassword');
+
+
+    // Users Routes
+    Route::get('admin/view-users', 'UsersController@viewUsers');
 
 });
