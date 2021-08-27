@@ -50,131 +50,132 @@
                           <td>{{ $user['created_at'] }}</td>
                           {{-- <td>View User | Edit | Delete</td> --}}
                           <td> 
-                            <a href="#myModal{{ $user['id'] }}" data-toggle="modal" class="btn btn-success btn-mini">View</a> 
-                            <div id="myModal{{ $user['id'] }}" class="modal hide">
-                                <div class="modal-header">
-                                    <button data-dismiss="modal" class="close" type="button">x</button>
-                                    <h3>User Details</h3>
-                                </div>
-                                <div class="modal-body">
-                                    {{-- <p>Here is the text coming you can put </p> --}}
-                                    <table width="100%" cellpadding = "10" cellspacing= "10">
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Date of Birth: * </strong></td>
-                                          <td align="left" valign="top">{{ $user['details']['dob'] }}</td>
-                                        </tr>
-                                       
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Gender: * </strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['gender'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Height: * </strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['height'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Marital Status: * </strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['marital_status'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Body Type:</strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['body_type'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>City:</strong></td>
-                                          <td align="left" valign="top">{{ $user['details']['city'] }}</td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong> State:</strong></td>
-                                          <td align="left" valign="top">{{ $user['details']['state'] }}</td>
-                                        </tr>
+                            @if(!empty($user['details']['id']))
+                                    <a href="#myModal{{ $user['id'] }}" data-toggle="modal" class="btn btn-success btn-mini">View</a> 
+                                    <div id="myModal{{ $user['id'] }}" class="modal hide">
+                                    <div class="modal-header">
+                                        <button data-dismiss="modal" class="close" type="button">x</button>
+                                        <h3>User Details</h3>
+                                        <input type="checkbox" class="userStatus" rel="{{ $user['id'] }}" data-toggle="toggle" data-on="Enabled" data-off="Disabled" @if ($user['details']['status'] == "0") checked @endif>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- <p>Here is the text coming you can put </p> --}}
+                                        <table width="100%" cellpadding = "10" cellspacing= "10">
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Date of Birth: * </strong></td>
+                                            <td align="left" valign="top">{{ $user['details']['dob'] }}</td>
+                                            </tr>
                                         
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Country:</strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['country'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Languages:</strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['languages'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Hobbies:</strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['hobbies'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                            <td colspan="2"><h6 class="inner"> Education & Career</h6></td>
-                                        </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong> Highest Education:</strong></td>
-                                          <td align="left" valign="top">{{ $user['details']['education'] }}</td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td align="left" valign="top" class="body"><strong> Occupation:</strong></td>
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Gender: * </strong></td>
                                             <td align="left" valign="top">
-                                                {{ $user['details']['occupation'] }}
+                                                {{ $user['details']['gender'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Height: * </strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['height'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Marital Status: * </strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['marital_status'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Body Type:</strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['body_type'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>City:</strong></td>
+                                            <td align="left" valign="top">{{ $user['details']['city'] }}</td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong> State:</strong></td>
+                                            <td align="left" valign="top">{{ $user['details']['state'] }}</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Country:</strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['country'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Languages:</strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['languages'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Hobbies:</strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['hobbies'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="2"><h6 class="inner"> Education & Career</h6></td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong> Highest Education:</strong></td>
+                                            <td align="left" valign="top">{{ $user['details']['education'] }}</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td align="left" valign="top" class="body"><strong> Occupation:</strong></td>
+                                                <td align="left" valign="top">
+                                                    {{ $user['details']['occupation'] }}
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong> Income:</strong></td>
+                                            <td align="left" valign="top">
+                                                    {{ $user['details']['income'] }}
+                                                </select>
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="2"><h6 class="inner">About MySelf</h6></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top" class="body"><strong>About Myself: * </strong></td>
+                                                <td align="left" valign="top">
+                                                    {{ $user['details']['about_myself'] }}
+                                            </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="2"><h6 class="inner">About My Preferred Partner</h6></td>
+                                            </tr>
+                                            <tr>
+                                            <td align="left" valign="top" class="body"><strong>Partner Details: * </strong></td>
+                                            <td align="left" valign="top">
+                                                {{ $user['details']['about_partner'] }}
                                             </td>
                                         </tr>
-                          
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong> Income:</strong></td>
-                                          <td align="left" valign="top">
-                                                {{ $user['details']['income'] }}
-                                              </select>
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                              <td colspan="2"><h6 class="inner">About MySelf</h6></td>
-                                          </tr>
-                                        <tr>
-                                            <td align="left" valign="top" class="body"><strong>About Myself: * </strong></td>
-                                            <td align="left" valign="top">
-                                                {{ $user['details']['about_myself'] }}
-                                          </td>
-                                        </tr>
-                          
-                                        <tr>
-                                            <td colspan="2"><h6 class="inner">About My Preferred Partner</h6></td>
-                                        </tr>
-                                        <tr>
-                                          <td align="left" valign="top" class="body"><strong>Partner Details: * </strong></td>
-                                          <td align="left" valign="top">
-                                            {{ $user['details']['about_partner'] }}
-                                        </td>
-                                      </tr>
-                                       
-                                      </table>
+                                        
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <a href="#" class="btn btn-primary btn-mini">Edit</a>
-                            <a href="#" class="btn btn-danger btn-mini">Delete</a>
-
-
+                            @endif
+                                <a href="#" class="btn btn-primary btn-mini">Edit</a>
+                                <a href="#" class="btn btn-danger btn-mini">Delete</a>
                         </td>
                       </tr> 
                   @endforeach

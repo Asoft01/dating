@@ -170,4 +170,9 @@ class UsersController extends Controller
         // echo "<pre>"; print_r($users); die;
         return view('admin.users.view_users')->with(compact('users'));
     }
+
+    public function updateUserStatus(Request $request){
+        $data = $request->all();
+        UsersDetail::where('user_id', $data['user_id'])->update(['status' => $data['status']]);
+    }
 }

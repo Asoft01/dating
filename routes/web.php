@@ -46,5 +46,6 @@ Route::group(['middleware' => ['adminlogin']], function(){
 
     // Users Routes
     Route::get('admin/view-users', 'UsersController@viewUsers');
+    Route::post('admin/update-user-status', 'UsersController@updateUserStatus');
 
 });
